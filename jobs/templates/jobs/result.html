@@ -1,0 +1,30 @@
+<!doctype html>
+<link rel="stylesheet" type="text/css" >
+
+<html>
+</head>
+   <body>
+      <div class="a">
+         <h1>The best job is:</h1>
+  
+         {{ Job }}
+
+         {% csrf_token %}
+      
+         
+            {% csrf_token %}
+            <form action = "{% url 'job_results' %}" method = "POST">
+               {% csrf_token %}
+               <p>{{ result }}</p>
+            </form>
+            {% if result_query %}
+               {% for result in result_query %}
+               {{ result.url }}<br>
+               {% endfor %}
+            {% else %}
+                <p>No results Found </p>
+            {% endif %}
+   
+      </div>
+   </body>
+</html>

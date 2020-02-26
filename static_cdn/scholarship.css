@@ -1,0 +1,21 @@
+body{
+	background: #ffffff;
+}
+
+.col-md-3{
+	margin-top:15px;
+	margin-bottom:15px; 
+}
+
+.container{
+	margin-top: 160px;
+}
+
+.card{
+	overflow: hidden;
+}
+
+.img-fluid{
+	height:250px;
+	width: 250px;
+}

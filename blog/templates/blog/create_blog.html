@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'header1.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'signup.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'postjob.css'%}">
+
+<style type="text/css">
+  .create-form {
+	    width: 100%;
+	    max-width: 100%;
+	    padding: 15px;
+	    margin: auto;
+  	}
+
+  	.submit-button{
+  		max-width: 200px;
+  	}
+</style>
+
+
+
+
+      <h1 class="text-center">JOB FORM</h1>
+      <div class="container">
+       <form class="create-form" method="post" enctype="multipart/form-data">{% csrf_token %}
+
+		   <div class="row">
+          <div class="col-md-5">
+            <label class="label control-label">Job Title*</label>
+            <div class="input-group">
+              <span class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
+              <input type="text" name="job_title" class="form-control" placeholder="eg: Software Engineer">
+            </div>
+            <label class="label control-label">Job Type</label>
+            <div class="input-group">
+              <span class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
+              <input type="text" name="job_type" class="form-control" placeholder="eg: Full Time">
+            </div>
+            <label class="label control-label">Website Link</label>
+            <div class="input-group">
+              <span class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
+              <input type="text" name="url" class="form-control" placeholder="eg: www.Amazon.com">
+            </div>
+        </div>
+          <div class="col-md-5">
+            <label class="label control-label">Location</label>
+            <div class="input-group">
+              <span class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
+              <input type="text" name="location" class="form-control" placeholder="eg: Gurugram">
+            </div>
+            <label class="label control-label">Position</label>
+            <div class="input-group">
+              <span class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
+              <input type="text" name="position" class="form-control" placeholder="eg: Senior Software Engineer">
+            </div>
+            <label class="label control-label">Email ( for customer suppport )</label>
+            <div class="input-group">
+              <span class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
+              <input type="Email" name="contact_email" class="form-control" placeholder="eg: amazonindai@xyz.com">
+            </div>
+          </div>
+          <div class="row d-flex justify-content-center">
+          <div class="col-md-6">
+            <label class="label control-label">Job Discription</label>
+            <div class="form-group">
+              <textarea class="form-control" rows="20" id="job_description"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="container-bottom text-center">
+        <button id="post" type="submit">Post</button>
+        </form>
+      </div>
+
+
+
+
+
+
+
+{% endblock content %}

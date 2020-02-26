@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,700,800&display=swap" rel="stylesheet">
+<style type="text/css">
+  body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Nunito !important;
+}
+
+h1 {
+  margin-top:2%;
+  color:#FF3B2D;
+  font-family: Nunito;
+  font-weight: 800;
+
+}
+.input-group>.custom-select:not(:first-child),.input-group>.form-control:not(:first-child){
+  border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    margin-bottom:16px;
+}
+
+.form-control{
+  background: #FAFAFA 0% 0% no-repeat padding-box;
+  /*border: 1px solid #707070;*/
+  border-radius: 8px;
+  height: 56px;
+}
+
+.container{
+  margin-left: 20%;
+  margin-top:6%; 
+}
+
+.container-bottom{
+  margin-top:4%; 
+}
+
+.container-bottom button{
+  background: #FAFAFA 0% 0% no-repeat padding-box;
+  border: 1px solid #707070;
+  border-radius: 38px;
+  width: 340px;
+  height: 56px;
+  margin-bottom: 16px;
+}
+
+#register{
+  background: #FF3B2D 0% 0% no-repeat padding-box;
+  border-radius: 28px;
+  opacity: 1;
+  color: #FFFFFF;
+  width: 140px;
+  height: 46px;
+  margin-bottom: 0px;
+}
+
+.container-bottom p{
+  margin-top:2%;
+}
+
+.fa.pull-left{
+  margin-left:24px;
+  margin-right: -41px;
+  color: #FF3B2D;
+  overflow: hidden;
+}
+
+a{
+  color:#1473E6;
+}
+
+span{
+  margin-left:4px;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    margin-left: 24px;
+  }
+}
+</style>
+
+
+    <title>Sign Up</title>
+  </head>
+  <body>
+      <h1 class="text-center">SIGN UP</h1>
+      <div class="container">
+
+<form  method="post">{% csrf_token %}
+
+   <div class="row">
+          <div class="col-md-5">
+            <label class="label control-label">First Name*</label>
+            <div class="input-group">
+              <span class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
+              <input type="text" name="username" id="inputUsername" class="form-control" placeholder="eg:Jonathan" required autofocus >
+            </div>
+            <label class="label control-label">Last Name*</label>
+            <div class="input-group">
+              <span class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
+              <input type="text" name="last_name"  id="inputLastname" class="form-control" placeholder="eg:Kerry"required  >
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="age">Age group</label>
+                  <select class="form-control" id="age">
+                    <option>20-30 years</option>
+                    <option>30-40 years</option>
+                    <option>40-50 years</option>
+                    <option>50-60 years</option>
+                    <option>Prefer not to say</option>
+                  </select>
+                </div>
+              </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="gender">Gender</label>
+                <select class="form-control" id="gender">
+                  <option>Male</option>
+                  <option>Female</option>
+                  <option>Transgender</option>
+                  <option>Prefer not to say</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+           
+          <div class="col-md-5">
+            <label class="label control-label">Email*</label>
+            <div class="input-group">
+              <span class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
+              <input type="email" name="email" id="inputEmail" class="form-control" placeholder="eg:jonathan@xyz.com"required  >
+            </div>
+            <label class="label control-label">Password</label>
+            <div class="input-group">
+              <span class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
+              <input type="password" name="password1" id="inputPassword1" class="form-control" placeholder="Password" required >
+            </div>
+            <label class="label control-label">Re-Enter Password</label>
+            <div class="input-group">
+              <span class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
+              <input type="password" name="password2" id="inputPassword2" class="form-control" placeholder="Re-Enter Password" required >
+            </div>
+
+          </div>
+        </div>
+      </div>
+ 
+
+
+  
+
+
+
+
+  {% for field in registration_form %}
+      <p>
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+  {% endfor %}
+  {% if registration_form.non_field_errors %}
+    <div style="color: red">
+      <p>{{registration_form.non_field_errors}}</p>
+    </div>
+      
+  {% endif %}
+
+   <div class="container-bottom text-center">
+        <button id="register" type="submit">Register</button>
+        <p>Already have an account?<a href="">Log In</a></p>
+
+        <p>OR</p>
+
+        <div><button><span class="fa fa-google fa-2x pull-left" aria-hidden="true"> </span>   Sign up with Google</button></div>
+        <button><span class="fa fa-facebook-f fa-2x pull-left" aria-hidden="true"> </span>    Sign up with Facebook</button>
+      
+</form>
+  </div>
+
+   
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

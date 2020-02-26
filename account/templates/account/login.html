@@ -1,0 +1,143 @@
+
+
+      
+      <link href="https://fonts.googleapis.com/css?family=Nunito:400,700,800&display=swap" rel="stylesheet">
+<style type="text/css">
+  body{
+  background: transparent linear-gradient(220deg, #FF000091 0%, #FF9900 100%) 0% 0% /*no-repeat*/ padding-box;
+  opacity: 1;
+}
+
+.SignIn-container{
+  font-family:nunito; 
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  margin:auto;
+  padding: 0;
+  text-align: center;
+  width: 500px;
+    height: 500px;
+  background-color:#FFFFFF;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 15px;
+  opacity: 1;
+
+}
+.SignIn-container h2{
+  margin-top:10%;
+  margin-bottom:1%;
+  margin-right: auto;
+  color:#FF3B2D;
+  font-weight:800;
+}
+
+.form{
+  position: relative;
+  top: 12%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  margin:auto 10%;
+  
+}
+
+.form-input{
+  border:0;
+  outline: none;
+  font-size: 27px;
+  width:100%;
+  opacity: 30%;
+  margin-bottom: 48px;
+}
+
+input{
+  width:100%;
+  border-width: 0 0 1px;
+    border-color: black;
+  /*  opacity: 30%;*/
+}
+
+input:focus{
+  outline: none;
+}
+
+
+
+.form button {
+  background: #FF3B2D 0% 0% no-repeat padding-box;
+  border-radius: 28px;
+  opacity: 1;
+  height:40px;
+  width:120px;
+  color: #FFFFFF;
+  cursor: pointer;
+  margin-top:16px;
+  outline: none;
+  border: none;
+  &:hover{
+    background:;
+  }
+  
+}
+
+.form-btn{
+  margin-top:16px; 
+}
+
+.blue{
+  color: #1473E6;
+}
+</style>
+
+<dir class = SignIn-container>
+    <h2>SIGN IN</h2>
+    <div class="form">
+  
+
+
+<form method="post" >{% csrf_token %}
+
+  <div class="form-input mt-2">
+          <input type="email" name="email" id="inputEmail" placeholder="Enter Your Mail ID" required autofocus>
+  </div>
+
+  <div class="form-input mt-2" >
+    <input type="password" name="password" id="inputPassword" placeholder="Password" required>
+  </div>
+
+
+  
+
+  {% for field in login_form %}
+      <p>
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+  {% endfor %}
+  {% if login_form.non_field_errors %}
+    <div style="color: red">
+      <p>{{login_form.non_field_errors}}</p>
+    </div>
+      
+  {% endif %}
+
+  <div class="form-btn">
+          <button type="submit"class="submit-btn">LOG IN</button>
+        </div>
+
+</form>
+<p class="blue"><a href="{% url 'password_reset' %}" class="blue">Forgot Password</a></p>
+      <p>Don't have an account? <a href="{% url 'register_option' %}" class="blue">Register</a></p>
+    </div>
+    
+  </dir>
+
+
+
+

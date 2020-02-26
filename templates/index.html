@@ -1,0 +1,126 @@
+<!doctype html>
+
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,700,800&display=swap" rel="stylesheet">
+
+    <style type="text/css">
+      body,html{
+  margin: 0;
+  padding:0;
+  height: 100%;
+  width: 100%;
+  font-family: Nunito;
+}
+
+
+.topContainer{
+  height: 100%;
+  width: 100%;
+  padding:0;
+  }
+.topJb{
+  margin:0;
+  padding:0;
+  background: transparent linear-gradient(220deg, #FF000091 0%, #FF9900 100%) 0% 0% /*no-repeat*/ padding-box;
+  height: 100%;
+  width: 100%;
+  border-radius:0;
+}
+
+.head-main{
+  margin-left:40px; 
+}
+
+
+
+.head-main h1{
+  font-size:100px;
+  font-weight: 800;
+  color:#FFFFFF;
+  letter-spacing: 0;
+}
+
+.head-main button{
+    width: 208px;
+    height: 43px;
+    margin-top: 32px;
+    margin-left:8px;
+    text-align: center;
+    font: Light 32px/43px Nunito;
+    letter-spacing: 0;
+    color: #FF3B2D;
+    opacity: 1;
+    border-radius:46px ;
+    box-shadow: 0px 3px 6px #00000029;
+    border:0;
+    outline:none;
+  }
+
+.container-sub{
+    margin-top: 40px;
+    text-align: center;
+    height: 100%;
+}
+
+
+
+.container-sub h2{
+  color:#FF3B2D;
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.container-sub p{
+  text-align: left;
+  color:#707070;
+  font-size: 24px;
+}
+
+.float-left{
+  margin-top:100px;
+  width:50%;
+}
+
+.float-right{
+  background:url({% static 'footer.png' %});
+  height: 100%;
+  width:50%;
+}
+    </style>
+
+    <title>Index</title>
+  </head>
+  <body>
+    <div class="container-fluid topContainer ">
+      <div class="jumbotron topJb d-flex align-items-center">
+        <div class="head-main">
+          <h1 class="">Lets find <br> Together</h1>
+         <button><a href="{% url 'home' %}" style="text-decoration:none; color: red;">GET STARTED</a></button>
+        </div>
+      </div>
+      <div class="container container-sub">
+        <h2>ABOUT US</h2>
+        <div class="float-left">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation.</p>
+        </div>
+        <div class="float-right" >
+          
+        </div>
+      </div>
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

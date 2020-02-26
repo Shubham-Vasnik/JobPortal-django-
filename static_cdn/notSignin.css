@@ -1,0 +1,20 @@
+body{
+	background: #FFFFFF;
+	overflow: hidden;
+}
+
+.container{
+	margin-top: 50%;
+	text-align: center;
+}
+
+.footer-left{
+	position: absolute;
+	background: url('img/ftleft.png');
+	background-size: cover;
+	height: 50%;
+	width: 40%;
+	bottom: 0px;
+	left:0px;
+	overflow:hidden;
+}

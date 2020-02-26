@@ -1,0 +1,54 @@
+body{
+	 background: transparent linear-gradient(220deg, #FF000091 0%, #FF9900 100%) 0% 0% /*no-repeat*/ padding-box;
+    background-size: cover;
+	 opacity: 1;
+	 font-family:Nunito; 
+  	height:100vh; 
+}
+
+header{
+	background:linear-gradient(135deg, rgba(255,255,255,1) 60%, #F4F4F4 calc(60% + 2px)) ;
+	position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    box-shadow: 0px 3px 6px #00000029;
+    z-index: 9999;
+}
+
+header *{
+    display: inline;
+}
+
+header li {
+    margin-right: 20px;
+}
+
+header li a {
+    color: black;
+    text-decoration: none;
+    opacity: 60%;
+    padding-right:10px; 
+}
+
+.active a{
+	color:#FF3B2D;
+  	font-weight:700;
+}
+
+a:hover{
+	color:#FF3B2D;
+}
+
+.active a:hover{
+	color:#000000;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 59, 45, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+.navbar-toggler
+{
+   border-color:#FF3B2D ;
+}

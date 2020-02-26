@@ -1,0 +1,103 @@
+
+{% load static %}
+
+
+<style type="text/css">
+	@media (min-width: 768px) {
+	  html {
+	    font-size: 16px;
+	  }
+	}
+
+	.search-bar{
+		max-width: 500px;
+		width: 100%;
+	}
+	form{
+		width: 100%;
+	}
+</style>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,700,800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/f0caf2afad.js" crossorigin="anonymous"></script>
+
+<!-- Header -->
+<link rel="stylesheet" type="text/css" href="{% static 'header1.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'findjobs1.css'%}">
+
+
+
+<header>
+      <nav class="navbar navbar-expand-lg fixed-top ">
+        <a class="navbar-brand" href="#"><img src="">LOGO</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+           
+            <li class="nav-item active">
+              <a class="nav-link" href="{% url 'jobs' %}">Home<span class="sr-only">(current)</span></a>
+            </li>
+
+             <li class="nav-item ">
+              <a class="nav-link" href="{% url 'home' %}">Learn </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'scholarship_blog' %}">Schloarship</a>
+            </li>
+
+            {% if request.user.is_employee %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'employee_redirect' %}">Post Job</a>
+            </li>
+            {% else %}
+             <li class="nav-item">
+              <a class="nav-link" href="{% url 'blog:create' %}">Post Job</a>
+            </li>
+
+            {% endif %}
+
+            {% if request.user.is_authenticated %}
+
+              {% if request.user.is_employee %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'update_employee_account' %}">Account</a>
+            </li>
+              {% else %}
+               <li class="nav-item">
+              <a class="nav-link" href="{% url 'update_company_account' %}">Account</a>
+            </li>
+              {% endif %}
+            {% else %}
+             <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Account</a>
+            </li>
+            {% endif %}
+
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+ 
+    
+
+
+
+<!-- 
+  <div class="search-bar mt-sm-2 mr-2">
+    <form method="get">
+      <input class="form-control"  type="text" name="q" id="id_q" placeholder="Search...">
+    </form>
+  </div>
+<!-- End Header --> -->
+
+<script type="text/javascript">
+	document.getElementById("id_q").value = "{{query}}"
+</script>
+

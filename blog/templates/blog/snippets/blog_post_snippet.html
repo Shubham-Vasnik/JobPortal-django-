@@ -1,0 +1,194 @@
+
+
+
+<style type="text/css">
+
+.grid{
+	display: grid;
+	grid-template-columns: 20% 80%;
+	grid-template-areas: 
+	"filter main";
+	height: 100vh;
+	margin-top:64px;
+	margin-left:0px;
+	left:0;
+	top:64px;
+	align-items: center;
+  	justify-content: center;
+}
+
+
+.filter{
+	margin:auto;
+	position: fixed;
+	grid-area:filter;
+	/*float:left;*/
+	background-color: #ffffff;
+	width:20%;
+	height: 100%; 
+
+}
+
+.filter h3{
+	text-align:left;
+	margin-left: 24px;
+	font-weight: 400;
+
+}
+
+.fa-2x{
+	margin-top: 13px;
+	margin-right: 40px;
+}
+
+.main{
+
+	/*background: transparent linear-gradient(220deg, #FF000091 0%, #FF9900 100%) 0% 0%;*/
+	grid-area:main;
+	/*float:right;*/
+	height:100%;
+	text-align: left;
+}
+
+.main h2{
+	margin-top: 50px;
+	margin-left: 120px;
+	letter-spacing: 0;
+	color: #FFFFFF;
+}
+
+.filter-types{
+	margin-top: 24px; 
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.filter-types li{
+	margin:16px 0; 
+}
+
+
+.content{
+	background-color: #FFFFFF;
+	border-radius: 42px;
+	box-shadow: 0px 1px 3px #00000029;
+	width:80%;
+	height:80px; 
+	margin:56px auto;
+	text-align: left;
+}
+
+.content-heading{
+	margin-left: 120px;
+	padding-top:10px;
+
+}
+
+.sub-content{
+	margin-left: 120px;
+	padding-top:10px;
+}
+
+.disable{
+	display: none;
+}
+</style>
+
+
+<div class="grid">
+		<!-- <div class="filter">
+			<h3>Sort by</h3>
+			<hr>
+			<div class="filter-types">
+				<ul>
+					<li><input type="checkbox" name="inter">Intern</li>
+					<li><input type="checkbox" name="full-time">Full Time</li>
+					<li><input type="checkbox" name="student">Student</li>
+					<li><input type="checkbox" name="work-from-home">Work From Home</li>
+					<li><input type="checkbox" name="location">Location</li>
+				</ul>
+			</div>
+				<div class="disable">
+					<form>
+					<div><label for="find-location">Enter The Location</label></div>
+					<input type="search" name="find-location" placeholder="Patna">
+					<button type="submit" class="submit-btn">Find Jobs</button>
+					</form>
+				</div>
+		</div> -->
+
+
+{% if blog_post %}
+<!-- <div class="container">
+	<div class="row"> -->
+		<!-- Blog Post
+		<div class="card m-auto">
+			<a href="{% url 'blog:detail' post.slug %}">
+				<img class="card-img-top" src="{{blog_post.image.url}}">
+			</a>
+			<div class="card-body mt-2 mb-2">
+				<a href="{% url 'blog:detail' post.slug %}">
+					<h2 class="card-title">{{blog_post.job_title}}</h2>
+				</a>
+				<p class="card-text">{{blog_post.job_description|safe|truncatechars:180}}</p>
+				{% if blog_post.author == request.user %}
+					<a href="{% url 'blog:edit' blog_post.slug %}" class="btn btn-primary">Update</a>
+				{% endif %}
+			</div>
+			<div class="card-footer text-muted">
+			  Updated on {{blog_post.date_updated}} by {{blog_post.author.username}}
+			</div>
+		</div>
+	</div>
+</div>  -->
+
+
+		<div class="main">
+			<h2>BEST SUITABLE JOBS FOR YOU</h2>
+			<div class="content">
+				<div class="content-heading">{{blog_post.job_title}}<i  id="icon" class="far fa-bookmark fa-2x float-right" onclick="myFunction(this.id)"></i></div>
+				<div class="sub-content">{{blog_post.job_description}}</div>
+			</div>
+		</div>
+
+{% else %}
+<div class="main">
+			<div class="content">
+				<div class="content-heading">No results</div>
+				<div class="sub-content">There were no results matching the search: "{{query}}"</div>
+			</div>
+		</div>
+
+{% endif %}
+
+
+</div>
+
+    <!-- </div> -->
+    <script>
+        function myFunction(id) {
+          console.log(id);
+          var id=document.getElementById(id);
+          id.classList.toggle("far");
+          id.classList.toggle("fas");
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET', 'sample.txt', true);
+          xhr.onprogress = function(){
+        console.log('READYSTATE: ', xhr.readyState);
+      }
+      
+      xhr.onreadystatechange = function(){
+        console.log('READYSTATE: ', xhr.readyState);
+        if(this.readyState == 4 && this.status == 200){
+          console.log(this.responseText);
+        }
+      }
+
+      xhr.send();
+
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

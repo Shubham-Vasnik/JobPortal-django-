@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<style type="text/css">
+   .create-form {
+	    width: 100%;
+	    max-width: 100%;
+	    padding: 15px;
+	    margin: auto;
+  	}
+
+  	.submit-button{
+  		max-width: 200px;
+  	}
+
+	.image {
+	  opacity: 1;
+	  transition: .5s ease;
+	  backface-visibility: hidden;
+	}
+
+	.middle {
+	  transition: .5s ease;
+	  opacity: 0;
+	  position: absolute;
+	  text-align: center;
+	  top: 50%;
+	  left: 50%;
+	  transform: translate(-50%, -50%);
+	
+	}
+	.image-group{
+		position: relative;
+  		text-align: center;
+  		cursor:pointer;
+	}
+
+	.image-group:hover .image {
+	  opacity: 0.3;
+	}
+
+	.image-group:hover .middle {
+	  opacity: 1;
+	}
+
+	.text {
+	  margin: auto;
+	  background-color: #4CAF50;
+	  color: white;
+	  font-size: 15px;
+	  padding: 15px;
+	}
+</style>
+
+
+
+ <h1 class="text-center">JOB FORM</h1>
+      <div class="container">
+
+      	{% if success_message %}
+				<h3 style="color:green; text-align: center;">{{success_message}}</h3>
+			{% endif %}
+       <form class="create-form" method="post" enctype="multipart/form-data">{% csrf_token %}
+
+		   <div class="row">
+          <div class="col-md-5">
+            <label class="label control-label">Job Title*</label>
+            <div class="input-group">
+              <span class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
+              <input type="text" name="job_title" class="form-control" placeholder="eg: Software Engineer"
+              value={{ form.initial.job_title }}>
+            </div>
+            <label class="label control-label">Job Type</label>
+            <div class="input-group">
+              <span class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
+              <input type="text" name="job_type" class="form-control" placeholder="eg: Full Time"
+              value={{ form.initial.job_type }}>
+            </div>
+            <label class="label control-label">Website Link</label>
+            <div class="input-group">
+              <span class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
+              <input type="text" name="url" class="form-control" placeholder="eg: www.Amazon.com"
+              value={{ form.initial.url }}>
+            </div>
+        </div>
+          <div class="col-md-5">
+            <label class="label control-label">Location</label>
+            <div class="input-group">
+              <span class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
+              <input type="text" name="location" class="form-control" placeholder="eg: Gurugram" value="{{ form.initial.location }}">
+            </div>
+            <label class="label control-label">Position</label>
+            <div class="input-group">
+              <span class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
+              <input type="text" name="position" class="form-control" placeholder="eg: Senior Software Engineer" value="{{ form.initial.position }}">
+            </div>
+            <label class="label control-label">Email ( for customer suppport )</label>
+            <div class="input-group">
+              <span class="input-group-addon"> <span class="glyphicon glyphicon-user"></span></span>
+              <input type="Email" name="contact_email" class="form-control" placeholder="eg: amazonindai@xyz.com" value="{{ form.initial.contact_email }}">
+            </div>
+          </div>
+          <div class="row d-flex justify-content-center">
+          <div class="col-md-6">
+            <label class="label control-label">Job Discription</label>
+            <div class="form-group">
+              <textarea class="form-control" rows="20" id="job_description">{{ form.initial.job_description }}</textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      {% for field in form %}
+					<p>
+						{% for error in field.errors %}
+							<p style="color: red">{{ error }}</p>
+						{% endfor %}
+					</p>
+				{% endfor %}
+				{% if form.non_field_errors %}
+					<div style="color: red">
+						<p>{{form.non_field_errors}}</p>
+					</div>
+				{% endif %}
+      <div class="container-bottom text-center">
+        <button id="post" type="submit">Post</button>
+        </form>
+      </div>
+
+
+{% for field in form %}
+					<p>
+						{% for error in field.errors %}
+							<p style="color: red">{{ error }}</p>
+						{% endfor %}
+					</p>
+				{% endfor %}
+				{% if form.non_field_errors %}
+					<div style="color: red">
+						<p>{{form.non_field_errors}}</p>
+					</div>
+				{% endif %}
+
+{% endblock content %}

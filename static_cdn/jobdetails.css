@@ -1,0 +1,134 @@
+body{
+	font-family: Nunito;
+	background: #FFFFFF;
+}
+
+.container{
+	margin-top: 74px;
+	text-align: center;
+}
+
+.description{
+	text-align: left;
+}
+
+.dot{
+	width:10px;
+	height:10px;
+	margin-right:8px;
+	border-radius:50%;
+	background: #A4FF53;
+	display: inline-block;
+}
+
+.col-md-6 {
+	flex: 0 0 100%;
+	width:100% !important;
+	max-width: 100%;
+}
+
+
+
+.container button{
+	background: #1492E6 0% 0% no-repeat padding-box;
+	width: 136px;
+	height: 48px;
+	margin: 8px;
+	margin-top: 32px; 
+	border-radius: 37px;
+	opacity: 1;
+	text-align: center;
+	letter-spacing: 0;
+	color: #FFFFFF;
+	border:0;
+	opacity: 1;
+}
+
+.sub-container p{
+	text-align: left;
+	width:100%;
+	margin-bottom:10%;
+	margin-left:4%;
+	font-size:24px;
+}
+
+.applicants{
+	margin: 8px;
+	background: #FFFFFF 0% 0% no-repeat padding-box;
+	box-shadow: 0px 1px 2px #00000029;
+	border: 1px solid #707070;
+	border-radius: 42px;
+	opacity: 1;
+	width:600px;
+	height:80px;
+}
+
+.float-left{
+	margin-top:15px;
+	margin-left: 16px;
+}
+
+.float-right{
+	margin-top: 19px;
+	margin-right: 32px;
+}
+
+.job-heading{
+	font-size:16px;
+	margin:4px;
+	margin-left:8px;
+	text-align: left;
+}
+
+.date{
+	margin:4px;
+	margin-left:8px;
+	font-size:12px;
+	text-align: left;
+	color:#000000;
+	opacity: 60%;
+}
+
+.left{
+	float: right;
+}
+
+.float-left img{
+	float: left;
+	height:50px;
+	width: 50px;
+	border-radius: 50%;
+}
+
+.float-right button{
+	margin: 0;
+	margin-left:8px;
+	background: #FFFFFF 0% 0% no-repeat padding-box;
+	color: #000000;
+	width: 120px;
+	height: 42px;
+	border: 1px solid #707070;
+	border-radius: 16px;
+	opacity: 1;
+	outline: none;
+}
+
+#resume{
+	background: #FF3B2D 0% 0% no-repeat padding-box;
+	color: #FFFFFF;
+	border:none;
+	border-radius: 16px;
+	opacity: 1;
+}
+
+hr{
+	width:30%;
+}
+
+@media only screen and (max-width: 768px) {
+  .applicants {
+  	margin-left: 0;
+  	width:100%;
+    min-width:480px;
+  }
+}
