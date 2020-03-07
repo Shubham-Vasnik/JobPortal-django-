@@ -83,12 +83,3 @@ input:hover{
 	outline: none;
 }
 
-img {
-	width: 250px;
-	height: 250px;
-}
-
-.img-fluid{
-	width: 250px !important;
-	height: 250px !important;
-}

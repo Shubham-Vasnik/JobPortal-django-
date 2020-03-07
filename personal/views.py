@@ -5,10 +5,23 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from blog.views import get_job_post_queryset
 from blog.models import JobPost
 
+
+
 def first_page_view(request):
 	return render(request,'index.html')
 
 JOB_POSTS_PER_PAGE = 10
+
+def job_search_view(request):
+
+	context={}
+	query =" "
+	if request.GET:
+		query=request.GET.get('q','')
+		context['query']=str(query)
+
+	print(query)
+	return render(request,'personal/learn.html',context)
 
 def home_screen_view(request, *args, **kwargs):
 	

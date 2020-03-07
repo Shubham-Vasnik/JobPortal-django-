@@ -4,6 +4,7 @@ from django.contrib.auth import login, authenticate, logout
 from account.forms import RegistrationForm, AccountAuthenticationForm, EmployeeUpdateForm,CompanyUpdateForm
 from blog.models import JobPost 
 from account.models import Account
+from blog.models import JobPost
 
 
 
@@ -17,7 +18,7 @@ def registration_view(request):
 			raw_password = form.cleaned_data.get('password1')
 			account = authenticate(email=email, password=raw_password)
 			login(request, account)
-			return redirect('home')
+			return redirect('jobs')
 		else:
 			context['registration_form'] = form
 
@@ -45,7 +46,7 @@ def employee_registration_view(request):
 			
 			login(request, account)
 
-			return redirect('home')
+			return redirect('jobs')
 		else:
 			context['registration_form'] = form
 
@@ -72,7 +73,7 @@ def company_registration_view(request):
 			user.save()
 			login(request, account)
 
-			return redirect('home')
+			return redirect('jobs')
 		else:
 			context['registration_form'] = form
 
@@ -84,7 +85,7 @@ def company_registration_view(request):
 
 def logout_view(request):
 	logout(request)
-	return redirect('/home')
+	return redirect('jobs')
 
 
 def login_view(request):
@@ -93,7 +94,7 @@ def login_view(request):
 
 	user = request.user
 	if user.is_authenticated: 
-		return redirect("home")
+		return redirect("jobs")
 
 	if request.POST:
 		form = AccountAuthenticationForm(request.POST)
@@ -104,7 +105,7 @@ def login_view(request):
 
 			if user:
 				login(request, user)
-				return redirect("home")
+				return redirect("jobs")
 
 	else:
 		form = AccountAuthenticationForm()
@@ -183,14 +184,15 @@ def company_account_view(request):
 			)
 
 	context['account_form'] = form
-
-	blog_posts = JobPost.objects.filter(author=request.user)
-	context['blog_posts'] = blog_posts
+	if request.user.is_authenticated:
+		blog_posts = JobPost.objects.filter(author=request.user)
+		context['blog_posts'] = blog_posts
 
 	return render(request, "account/company_update_form.html", context)
 
 
 def must_authenticate_view(request):
+
 	return render(request, 'account/must_authenticate.html', {})
 
 
@@ -198,7 +200,23 @@ def register_option_view(request):
 	return render(request,'account/register_option.html')
 
 def company_redirect_view(request):
-	return render(request,'account/company_redirect.html')
+	if request.user.is_authenticated:
+
+		return render(request,'account/company_redirect.html')
+	else:
+		return render(request, 'account/must_authenticate.html', {})
 
 def employee_redirect_view(request):
-	return render(request,'account/employee_redirect.html')
+	if request.user.is_authenticated:
+
+		return render(request,'account/employee_redirect.html')
+	else:
+		return render(request, 'account/must_authenticate.html', {})
+
+def company_profile_view(request):
+	context={}
+	job_posts = JobPost.objects.filter(author=request.user)
+	context['job_posts'] = job_posts
+	print("------------------------------------")
+	print(job_posts)
+	return render(request,'account/company_profile.html',context)

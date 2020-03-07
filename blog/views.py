@@ -15,12 +15,15 @@ def create_blog_view(request):
 	if not user.is_authenticated:
 		return redirect('company_redirect')
 
+
+
 	form = CreateJobPostForm(request.POST or None)
 	if form.is_valid():
 		obj = form.save(commit=False)
 		author = Account.objects.filter(email=user.email).first()
 		obj.author = author
 		obj.save()
+		context['success']="Successfully Updated"
 		form = CreateJobPostForm()
 
 	context['form'] = form

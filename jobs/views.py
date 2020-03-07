@@ -19,15 +19,29 @@ def my_jobs(request):
 
 def result(request):
 	if request.method == 'POST':
+		context={}
 		result = request.POST['Job']
 		#result = request.form.getlist('Job')
+		result=list([result])
+		#print(type(result))
+		print('____________________________')
+
+		print(result[0])
+		print('________________________________--')
 		train_model()
 		processed_text = first_go_model.prediction(result[0])
-		result = {'Job': processed_text}
+		context = {'Job': processed_text}
+		print('###########################')
 		print(processed_text)
+		print('###########################')
+
+		split_data=processed_text.split()
+		for data in split_data:
+			context["result_query"]=JobDesc.objects.filter(category__icontains=data)
+
+
 	
-		result["result_query"]=JobDesc.objects.filter(category__icontains=processed_text)
-		print(result)
-		return render(request,"jobs/result.html",result)
+
+		return render(request,"jobs/result.html",context)
 
 

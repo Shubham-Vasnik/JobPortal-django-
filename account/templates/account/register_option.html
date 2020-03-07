@@ -1,148 +1,25 @@
-<!-- <a href="{% url 'register_employee' %}">As an Employee</a>
-
-<br>
-
-<a href="{% url 'register_company' %}">As an Employer</a> -->
-
-
-
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
-	<title>Sign Up</title>
-	<link rel="stylesheet" type="text/css" href="sign-in.css">
+	<title>Sign In</title> 
+	<link rel="stylesheet" type="text/css" href="{%  static 'sign-in.css' %}">
 	<link href="https://fonts.googleapis.com/css?family=Nunito:400,700,800&display=swap" rel="stylesheet">
 </head>
-<style>
-    body{
-	background: transparent linear-gradient(220deg, #FF000091 0%, #FF9900 100%) 0% 0% /*no-repeat*/ padding-box;
-	opacity: 1;
-	overflow: hidden;
-}
-
-.SignIn-container{
-	font-family:nunito; 
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	display: block;
-	margin:auto;
-	padding: 0;
-	text-align: center;
-	width: 500px;
-  	height: 500px;
-	background-color:#FFFFFF;
-	box-shadow: 0px 3px 6px #00000029;
-	border-radius: 15px;
-	opacity: 1;
-
-}
-.SignIn-container h2{
-	margin-top:10%;
-	margin-bottom:1%;
-	margin-right: auto;
-	color:#FF3B2D;
-	font-weight:800;
-}
-
-.form{
-	position: relative;
-	top: 12%;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	display: block;
-	margin:auto 10%;
-	
-}
-
-.form-input{
-	border:0;
-	outline: none;
-	font-size: 27px;
-	width:100%;
-	opacity: 30%;
-	margin-bottom: 48px;
-}
-
-input{
-	width:100%;
-	border-width: 0 0 1px;
-  	border-color: black;
-  /*	opacity: 30%;*/
-}
-
-input:focus{
-	outline: none;
-}
-
-
-
-.form button {
-	background: #FF3B2D 0% 0% no-repeat padding-box;
-	border-radius: 28px;
-	opacity: 1;
-	height:40px;
-	width:120px;
-	color: #FFFFFF;
-	cursor: pointer;
-	margin-top:16px;
-	outline: none;
-	border: none;
-	&:hover{
-		background:;
-	}
-	
-}
-
-.form-btn{
-	margin-top:16px; 
-}
-
-.blue{
-	color: #1473E6;
-}
-
-.btn{
-	border-radius: 16px;
-	opacity: 1;
-	height:40px;
-	color: #000000;
-	cursor: pointer;
-	margin-top:16px;
-	border:none;
-	background: #FFFFFF;
-	border: 1px solid#707070;
-	width:50%;
-}
-
-.btn:hover{
-	background:#FF3B2D;
-	color:#FFFFFF;
-	border:0;
-}
-
-.bt1{
- margin-top: 25% !important;
- margin-bottom:25px ;
-}
-</style>
 <body>
 	<dir class = SignIn-container>
-        <h2>SIGN UP</h2>
+        <h2>SIGN IN</h2>
         <div>
-            <button id="btn1" onclick="window.location.href = '{% url 'register_company' %}';" class="btn bt1">Sign up as company</button>
+            <button  onclick="window.location.href='{% url 'register_company' %}'" class="btn bt1">Sign in as company</button>
         </div>
          <div>
-            <button id="btn2" onclick="window.location.href ='{% url 'register_employee' %}';" class="btn">Sign up as jobseeker</button>
+            <button onclick="window.location.href='{% url 'register_employee' %}'"  class="btn">Sign in as jobseeker</button>
          </div>
                  
 		</div>
 		
-    </dir>
-    
-    
+	</dir>
 </body>
 </html>
+
+

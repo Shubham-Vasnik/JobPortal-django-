@@ -4,10 +4,6 @@
 	opacity: 29%;
 } 
 
-#id_q{
-	width:100%;
-}
-
 
 .search-container{
 	position: absolute;
@@ -45,6 +41,7 @@ form{
 
   input:focus{
   	outline: none;
+    border-radius:38px;
 }
 
 input:hover{
@@ -79,17 +76,17 @@ button:hover{
 
 
 input[type=text] {
-  width: 100%;
+  width: 100px;
   transition: ease-in-out, width .35s ease-in-out;
 }
 
 input[type=text]:focus {
-  width: 100%;
+  width: 250px;
 }
 
 .footer-left{
 	position: absolute;
-	background: url('static/img/ftleft.png');
+	background: url({% static url'ftleft.png' %});
 	background-size: cover;
 	height: 50%;
 	width: 40%;
@@ -100,7 +97,7 @@ input[type=text]:focus {
 
 .footer-right{
 	position:absolute;
-	background: url({% static  'static/img/ftright.png' %});
+	background: url({% static url 'ftright.png' %});
 	background-size: cover;
 	height: 48%;
 	width: 28%;

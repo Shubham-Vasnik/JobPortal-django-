@@ -24,6 +24,7 @@ from jobs.views import my_jobs,result
 from personal.views import (
 	home_screen_view,
     first_page_view,
+    job_search_view,
 )
 
 from scholarship_blog.views import scholarship_blog_view
@@ -39,6 +40,7 @@ from account.views import (
     register_option_view,
     employee_redirect_view,
     company_redirect_view,
+    company_profile_view,
 )
 
 urlpatterns = [
@@ -57,11 +59,13 @@ urlpatterns = [
 
     path('register/company_update', company_account_view, name="update_company_account"),
     path('register/employee_update', employee_account_view, name="update_employee_account"),
+    path('home/company_profile',company_profile_view,name="company_profile_account"),
 
     path('register_option/',register_option_view,name="register_option"),
     
     path('home/',my_jobs,name="jobs"),
     path('home/results/',result,name="job_results"),
+    path('learn/',job_search_view,name='learn_page'),
 
     path('scholarship_data/',scholarship_blog_view,name='scholarship_blog'),
 

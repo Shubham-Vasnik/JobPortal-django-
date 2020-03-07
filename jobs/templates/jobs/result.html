@@ -1,30 +1,172 @@
 <!doctype html>
-<link rel="stylesheet" type="text/css" >
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,700,800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/f0caf2afad.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'header1.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'jobs.css'%}">
+    <title>Job Details</title>
+  </head>
+  <body>
+   <header>
+      <nav class="navbar navbar-expand-lg fixed-top ">
+        <a class="navbar-brand" href="#"><img src="">LOGO</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-<html>
-</head>
-   <body>
-      <div class="a">
-         <h1>The best job is:</h1>
-  
-         {{ Job }}
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+               <li class="nav-item active ">
+              <a class="nav-link" href="{% url 'jobs' %}">Home<span class="sr-only">(current)</span></a>
+            </li>
 
-         {% csrf_token %}
-      
-         
-            {% csrf_token %}
-            <form action = "{% url 'job_results' %}" method = "POST">
-               {% csrf_token %}
-               <p>{{ result }}</p>
-            </form>
-            {% if result_query %}
+             <li class="nav-item ">
+              <a class="nav-link" href="{% url 'home' %}">Learn </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'scholarship_blog' %}">Schloarship</a>
+            </li>
+
+            {% if request.user.is_employee %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'employee_redirect' %}">Post Job</a>
+            </li>
+            {% else %}
+             <li class="nav-item">
+              <a class="nav-link" href="{% url 'blog:create' %}">Post Job</a>
+            </li>
+
+            {% endif %}
+
+            {% if request.user.is_authenticated %}
+
+              {% if request.user.is_employee %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'update_employee_account' %}">Account</a>
+            </li>
+              {% else %}
+               <li class="nav-item">
+              <a class="nav-link" href="{% url 'company_profile_account' %}">Account</a>
+            </li>
+              {% endif %}
+            {% else %}
+             <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Account</a>
+            </li>
+            {% endif %}
+
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <div class="grid">
+      <div class="filter">
+         <h3>Sort by</h3>
+         <hr>
+         <div class="filter-types">
+            <ul>
+               <li><input type="checkbox" name="inter">Intern</li>
+               <li><input type="checkbox" name="full-time">Full Time</li>
+               <li><input type="checkbox" name="student">Student</li>
+               <li><input type="checkbox" name="work-from-home">Work From Home</li>
+               <li><input type="checkbox" name="location">Location</li>
+            </ul>
+         </div>
+            <div class="disable">
+               <form>
+               <div><label for="find-location">Enter The Location</label></div>
+               <input type="search" name="find-location" placeholder="Patna">
+               <button type="submit" class="submit-btn">Find Jobs</button>
+               </form>
+            </div>
+      </div>
+      <div class="main">
+         <h2>BEST SUITABLE JOBS FOR YOU</h2>
+                    {{ Job }}
+
+          {% if result_query %}
                {% for result in result_query %}
-               {{ result.url }}<br>
+                <div class="content">
+            <div class="content-heading">{{ result.category }} <i onclick="myFunction(this.id)" id="icon" class="far fa-bookmark fa-2x float-right"></i></div>
+            <div class="sub-content">{{ result.company_name }}</div>
+            </div>
+           
                {% endfor %}
             {% else %}
-                <p>No results Found </p>
-            {% endif %}
-   
-      </div>
-   </body>
+              
+  
+
+         <div class="content">
+            <div class="content-heading">Product Designer <i onclick="myFunction(this.id)" id="icon1" class="far fa-bookmark fa-2x float-right"></i></div>
+            <div class="sub-content">Amazon India</div>
+         </div>
+         <div class="content">
+            <div class="content-heading">UX Designer<i onclick="myFunction(this.id)" id="icon2" class="far fa-bookmark fa-2x float-right"></i></div>
+            <div class="sub-content">Amazon India</div>
+         </div>
+         <div class="content">
+            <div class="content-heading">Motion designer<i onclick="myFunction(this.id)" id="icon3" class="far fa-bookmark fa-2x float-right"></i></div>
+            <div class="sub-content">Amazon India</div>
+         </div>
+         <div class="content">
+            <div class="content-heading">Graphic Designer<i onclick="myFunction(this.id)" id="icon4" class="far fa-bookmark fa-2x float-right"></i></div>
+            <div class="sub-content">Amazon India</div>
+         </div>
+         <div class="content">
+            <div class="content-heading">Illustrator<i onclick="myFunction(this.id)" id="icon5" class="far fa-bookmark fa-2x float-right"></i></div>
+            <div class="sub-content">Amazon India</div>
+         </div>
+         <div class="content">
+            <div class="content-heading">Head Of Design<i onclick="myFunction(this.id)" id="icon6" class="far fa-bookmark fa-2x float-right"></i></div>
+            <div class="sub-content">Amazon India</div>
+         </div>
+         <div class="content">
+            <div class="content-heading">Editor<i onclick="myFunction()" id="icon7" class="far fa-bookmark fa-2x float-right"></i></div>
+            <div class="sub-content">Amazon India</div>
+         </div>
+          </div>
+
+                   {% endif %}
+  
+    </div>
+    <script>
+        function myFunction(id) {
+          console.log(id);
+          var id=document.getElementById(id);
+          id.classList.toggle("far");
+          id.classList.toggle("fas");
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET', 'sample.txt', true);
+          xhr.onprogress = function(){
+        console.log('READYSTATE: ', xhr.readyState);
+      }
+      
+      xhr.onreadystatechange = function(){
+        console.log('READYSTATE: ', xhr.readyState);
+        if(this.readyState == 4 && this.status == 200){
+          console.log(this.responseText);
+        }
+      }
+
+      xhr.send();
+
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
 </html>
+
+
+
+

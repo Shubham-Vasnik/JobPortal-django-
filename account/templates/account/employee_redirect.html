@@ -38,7 +38,7 @@
 
             {% if request.user.is_employee %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'employee_redirect' %}">Post Job</a>
+              <a class="nav-link" href="{% url 'company_redirect' %}">Post Job</a>
             </li>
             {% else %}
              <li class="nav-item">
@@ -47,7 +47,7 @@
 
             {% endif %}
 
-            {% if request.user.is_authenticated %}
+     
 
               {% if request.user.is_employee %}
             <li class="nav-item">
@@ -55,14 +55,12 @@
             </li>
               {% else %}
                <li class="nav-item">
-              <a class="nav-link" href="{% url 'update_company_account' %}">Account</a>
+              <a class="nav-link" href="{% url 'company_profile_account' %}">Account</a>
             </li>
               {% endif %}
-            {% else %}
-             <li class="nav-item">
-              <a class="nav-link" href="{% url 'login' %}">Account</a>
-            </li>
-            {% endif %}
+      
+       
+
 
             </li>
           </ul>

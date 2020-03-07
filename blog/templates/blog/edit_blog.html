@@ -1,69 +1,18 @@
-{% extends 'base.html' %}
+{% load static %}
 
-
-{% block content %}
-<style type="text/css">
-   .create-form {
-	    width: 100%;
-	    max-width: 100%;
-	    padding: 15px;
-	    margin: auto;
-  	}
-
-  	.submit-button{
-  		max-width: 200px;
-  	}
-
-	.image {
-	  opacity: 1;
-	  transition: .5s ease;
-	  backface-visibility: hidden;
-	}
-
-	.middle {
-	  transition: .5s ease;
-	  opacity: 0;
-	  position: absolute;
-	  text-align: center;
-	  top: 50%;
-	  left: 50%;
-	  transform: translate(-50%, -50%);
-	
-	}
-	.image-group{
-		position: relative;
-  		text-align: center;
-  		cursor:pointer;
-	}
-
-	.image-group:hover .image {
-	  opacity: 0.3;
-	}
-
-	.image-group:hover .middle {
-	  opacity: 1;
-	}
-
-	.text {
-	  margin: auto;
-	  background-color: #4CAF50;
-	  color: white;
-	  font-size: 15px;
-	  padding: 15px;
-	}
-</style>
+  <link rel="stylesheet" type="text/css" href="{% static 'header1.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'profile.css' %}">
 
 
 
  <h1 class="text-center">JOB FORM</h1>
-      <div class="container">
-
-      	{% if success_message %}
-				<h3 style="color:green; text-align: center;">{{success_message}}</h3>
-			{% endif %}
+      <div style="color:green; text-align: center;">
+        {% if success_message %}
+    {{success_message}}</h3>
+      {% endif %}
        <form class="create-form" method="post" enctype="multipart/form-data">{% csrf_token %}
 
-		   <div class="row">
+       <div class="row">
           <div class="col-md-5">
             <label class="label control-label">Job Title*</label>
             <div class="input-group">
@@ -113,17 +62,17 @@
       </div>
 
       {% for field in form %}
-					<p>
-						{% for error in field.errors %}
-							<p style="color: red">{{ error }}</p>
-						{% endfor %}
-					</p>
-				{% endfor %}
-				{% if form.non_field_errors %}
-					<div style="color: red">
-						<p>{{form.non_field_errors}}</p>
-					</div>
-				{% endif %}
+          <p>
+            {% for error in field.errors %}
+              <p style="color: red">{{ error }}</p>
+            {% endfor %}
+          </p>
+        {% endfor %}
+        {% if form.non_field_errors %}
+          <div style="color: red">
+            <p>{{form.non_field_errors}}</p>
+          </div>
+        {% endif %}
       <div class="container-bottom text-center">
         <button id="post" type="submit">Post</button>
         </form>
@@ -131,16 +80,15 @@
 
 
 {% for field in form %}
-					<p>
-						{% for error in field.errors %}
-							<p style="color: red">{{ error }}</p>
-						{% endfor %}
-					</p>
-				{% endfor %}
-				{% if form.non_field_errors %}
-					<div style="color: red">
-						<p>{{form.non_field_errors}}</p>
-					</div>
-				{% endif %}
+          <p>
+            {% for error in field.errors %}
+              <p style="color: red">{{ error }}</p>
+            {% endfor %}
+          </p>
+        {% endfor %}
+        {% if form.non_field_errors %}
+          <div style="color: red">
+            <p>{{form.non_field_errors}}</p>
+          </div>
+        {% endif %}
 
-{% endblock content %}
